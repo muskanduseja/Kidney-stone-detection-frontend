@@ -1,123 +1,139 @@
 import React from "react";
-import { Box, Typography, TextField, Button, Container } from "@mui/material";
-import { Person, Email, Message } from "@mui/icons-material"; // Icons for fields
+import { Box, Typography, TextField, Button, Grid, Paper } from "@mui/material";
+import { LocationOn, Phone, Email } from "@mui/icons-material";
+import Footer from "./Footer"; // ✅ Keep Footer
+import ContactImage from "../../assets/con.jpg"; // ✅ Image imported
 
 const Contact = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Gradient background
-      }}
-    >
-      <Container
+    <>
+      {/* ❌ Removed Navbar to avoid duplication */}
+      <Box
         sx={{
-          maxWidth: "500px",
-          background: "rgba(255, 255, 255, 0.9)",
-          padding: "40px",
-          borderRadius: "15px",
-          boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          minHeight: "100vh",
+          background: "#000", 
+          padding: "40px 20px",
         }}
       >
-        <Typography
-          variant="h4"
-          align="center"
-          sx={{ fontWeight: "bold", color: "#333", mb: 3 }}
-        >
+        <Typography variant="h4" align="center" sx={{ color: "#fff", fontWeight: "bold", mb: 3 }}>
           Contact Us
         </Typography>
 
-        {/* Name Field */}
-        <TextField
-          fullWidth
-          label="Name"
-          variant="outlined"
-          margin="normal"
-          InputProps={{
-            startAdornment: <Person sx={{ color: "#667eea", mr: 1 }} />, // Name icon
-          }}
-          sx={{
-            mb: 2,
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#667eea", // Border color
-              },
-              "&:hover fieldset": {
-                borderColor: "#764ba2", // Hover border color
-              },
-            },
-          }}
-        />
+        <Grid container spacing={4} maxWidth="lg" alignItems="center">
+          {/* Left Side - Image */}
+          <Grid item xs={12} md={5} sx={{ display: "flex", justifyContent: "center" }}>
+            <img
+              src={ContactImage} // ✅ Use the imported image here
+              alt="Support Agent"
+              style={{ 
+                width: "100%", // ✅ Make the image responsive
+                height: "450px", // ✅ Set a fixed height
+                maxWidth: "500px", // ✅ Increase max width
+                borderRadius: "15px", // ✅ Rounded corners
+                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)", // ✅ Add shadow
+                objectFit: "cover", // ✅ Ensure the image covers the area
+              }}
+            />
+          </Grid>
 
-        {/* Email Field */}
-        <TextField
-          fullWidth
-          label="Email"
-          variant="outlined"
-          margin="normal"
-          InputProps={{
-            startAdornment: <Email sx={{ color: "#667eea", mr: 1 }} />, // Email icon
-          }}
-          sx={{
-            mb: 2,
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#667eea", // Border color
-              },
-              "&:hover fieldset": {
-                borderColor: "#764ba2", // Hover border color
-              },
-            },
-          }}
-        />
+          {/* Right Side - Form */}
+          <Grid item xs={12} md={7}>
+            <Paper elevation={5} sx={{ padding: "30px", borderRadius: "15px", background: "#000" }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Name"
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        backgroundColor: "#000",
+                        color: "#fff",
+                        "& fieldset": { borderColor: "#fff" },
+                        "&:hover fieldset": { borderColor: "#fff" },
+                      },
+                      "& .MuiInputLabel-root": { color: "#fff" },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Email"
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        backgroundColor: "#000",
+                        color: "#fff",
+                        "& fieldset": { borderColor: "#fff" },
+                        "&:hover fieldset": { borderColor: "#fff" },
+                      },
+                      "& .MuiInputLabel-root": { color: "#fff" },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Phone number"
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        backgroundColor: "#000",
+                        color: "#fff",
+                        "& fieldset": { borderColor: "#fff" },
+                        "&:hover fieldset": { borderColor: "#fff" },
+                      },
+                      "& .MuiInputLabel-root": { color: "#fff" },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Message"
+                    variant="outlined"
+                    multiline
+                    rows={4}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        backgroundColor: "#000",
+                        color: "#fff",
+                        "& fieldset": { borderColor: "#fff" },
+                        "&:hover fieldset": { borderColor: "#fff" },
+                      },
+                      "& .MuiInputLabel-root": { color: "#fff" },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    sx={{
+                      background: "#44CBCB",
+                      color: "#fff",
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                      '&:hover': { background: "#44CBCB" },
+                    }}
+                  >
+                    Contact us now
+                  </Button>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
 
-        {/* Message Field */}
-        <TextField
-          fullWidth
-          label="Message"
-          variant="outlined"
-          margin="normal"
-          multiline
-          rows={4}
-          InputProps={{
-            startAdornment: <Message sx={{ color: "#667eea", mr: 1 }} />, // Message icon
-          }}
-          sx={{
-            mb: 2,
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#667eea", // Border color
-              },
-              "&:hover fieldset": {
-                borderColor: "#764ba2", // Hover border color
-              },
-            },
-          }}
-        />
-
-        {/* Send Message Button */}
-        <Button
-          variant="contained"
-          fullWidth
-          sx={{
-            mt: 2,
-            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Gradient button
-            color: "#fff",
-            fontWeight: "bold",
-            fontSize: "16px",
-            "&:hover": {
-              background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)", // Hover effect
-            },
-          }}
-        >
-          Send Message
-        </Button>
-      </Container>
-    </Box>
+      {/* ✅ Footer remains */}
+      <Footer />
+    </>
   );
 };
 
-export default Contact;
+export default Contact;

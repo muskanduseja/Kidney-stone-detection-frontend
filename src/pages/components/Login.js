@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Button, IconButton, InputAdornment, Card } from "@mui/material";
+import { 
+  Box, Typography, TextField, Button, IconButton, InputAdornment, Card 
+} from "@mui/material";
 import { Email, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
 import KidneyStoneImage from "../../assets/kidney-stone-image.jpg"; // Adjust path as needed
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -21,7 +25,7 @@ const Login = () => {
         sx={{
           width: "90%",
           maxWidth: "1200px",
-          minHeight: "80vh", // Full height
+          minHeight: "80vh",
           display: "flex",
           borderRadius: "15px",
           overflow: "hidden",
@@ -86,7 +90,7 @@ const Login = () => {
               maxWidth: "350px",
               display: "flex",
               flexDirection: "column",
-              gap: 3, // Adjusted spacing between elements
+              gap: 3,
             }}
           >
             {/* Email Field */}
@@ -97,14 +101,21 @@ const Login = () => {
               <TextField
                 fullWidth
                 variant="outlined"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Capture input
                 sx={{
-                  backgroundColor: "#fff",
+                  backgroundColor: "#fff",  // White background
                   borderRadius: "5px",
                   marginBottom: "15px",
+                  "& .MuiInputBase-input": {
+                    color: "#000", // ✅ Ensures black text color
+                    fontSize: "16px", // Optional: Adjust text size
+                    fontWeight: "bold", // Optional: Make text stand out
+                  },
                 }}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">
+                    <InputAdornment position="start" disablePointerEvents>
                       <Email sx={{ color: "#2193b0" }} />
                     </InputAdornment>
                   ),
@@ -120,11 +131,18 @@ const Login = () => {
               <TextField
                 fullWidth
                 type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} // Capture input
                 variant="outlined"
                 sx={{
                   backgroundColor: "#fff",
                   borderRadius: "5px",
                   marginBottom: "25px",
+                  "& .MuiInputBase-input": {
+                    color: "#000", // ✅ Ensures black text color
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                  },
                 }}
                 InputProps={{
                   startAdornment: (
@@ -177,4 +195,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login;
